@@ -18,4 +18,9 @@ export class LeavesService {
     async getLeaves(){
         return await this.leaveRepo.find();
     }
+
+    async deleteLeave(id){
+        const delete_department = await this.leaveRepo.delete(id)
+        return delete_department
+    }
 }
