@@ -9,9 +9,11 @@ export class LeavesController {
         private readonly userService: UsersService,
     ){}
 
-    @Get()
-    async getLeaves(@Body() userData){
-        const user = await this.userService.findOne(userData.email);
+    @Get(':id')
+    async getLeaves(@Param("id") id:string){
+        console.log("{userData}", id)
+        const user = await this.userService.findOne(id);
+        console.log({user})
         return this.leaveSerice.getLeavesByUserEmail(user)
     }
 
