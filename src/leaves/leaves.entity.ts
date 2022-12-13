@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Users } from './../users/entities/user.entity';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Leaves {
@@ -48,4 +49,8 @@ export class Leaves {
     default: '',
   })
   assigned_to: string;
+
+  @OneToOne(type => Users, users => users.id)
+  @JoinColumn()
+  users: Users
 }

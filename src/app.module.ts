@@ -5,6 +5,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LeavesModule } from './leaves/leaves.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Leaves } from './leaves/leaves.entity';
+import { UsersModule } from './users/users.module';
+import { Users } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -18,12 +20,13 @@ import { Leaves } from './leaves/leaves.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [Leaves],
+        entities: [Leaves, Users],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
     LeavesModule,
+    UsersModule,
    ],
   controllers: [],
   providers: [],
