@@ -1,5 +1,5 @@
 import { Leaves } from 'src/leaves/leaves.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Users {
@@ -37,7 +37,7 @@ export class Users {
     })
     access_token: string;
 
-    @OneToOne(type => Leaves, leaves => leaves.id)
+    @OneToMany(type => Leaves, leaves => leaves.id)
     @JoinColumn()
     leaves: Leaves
 }
