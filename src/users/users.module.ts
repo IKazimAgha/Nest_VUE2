@@ -8,9 +8,9 @@ import { LeavesService } from 'src/leaves/leaves.service';
 import { Leaves } from 'src/leaves/leaves.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Users])],
-  controllers: [UsersController],
-  providers: [UsersService],
+  imports: [TypeOrmModule.forFeature([Users, Leaves])],
+  controllers: [UsersController, LeavesController],
+  providers: [UsersService, LeavesService],
   exports: [UsersService]
 })
 export class UsersModule {}

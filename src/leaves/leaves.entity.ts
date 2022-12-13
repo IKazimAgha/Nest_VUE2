@@ -1,5 +1,5 @@
 import { Users } from './../users/entities/user.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Leaves {
@@ -50,7 +50,7 @@ export class Leaves {
   })
   assigned_to: string;
 
-  @OneToOne(type => Users, users => users.id)
+  @ManyToOne(type => Users, users => users.id)
   @JoinColumn()
   users: Users
 }

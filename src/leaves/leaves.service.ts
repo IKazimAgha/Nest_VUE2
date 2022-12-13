@@ -19,6 +19,14 @@ export class LeavesService {
         return await this.leaveRepo.find();
     }
 
+    async getLeavesByUserEmail(email){
+        return await this.leaveRepo.find({
+            where: {
+                users: email
+            }
+        });
+    }
+
     async deleteLeave(id){
         const delete_department = await this.leaveRepo.delete(id)
         return delete_department
